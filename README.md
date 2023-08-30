@@ -29,3 +29,7 @@ Correr la app
 ```
 npx expo start
 ```
+
+## Versionado 📌
+
+1.0.1 - Funsionalidad para navegar a distintas pantallas 
