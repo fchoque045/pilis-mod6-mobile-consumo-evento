@@ -25,6 +25,10 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "API_URL": "http://0.0.0.0:3000/api",
+      "STORAGE_KEY": "@AppConsumoEvento"
     }
   }
 }

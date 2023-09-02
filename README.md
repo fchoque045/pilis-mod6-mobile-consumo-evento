@@ -6,6 +6,8 @@ Grupo 4: Choque, Cruz, Torrejon, Corimayo, Martinez
 
 ## Ejecutar el proyecto 📋
 
+*Setear las variables de entorno en app.json -> "extra"
+
 Instalar dependecias
 
 ```
