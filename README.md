@@ -35,3 +35,5 @@ npx expo start
 ## Versionado 📌
 
 1.0.1 - Funsionalidad para navegar a distintas pantallas 
+
+1.0.2 - Funsionalidad de SignIn y SignUp
