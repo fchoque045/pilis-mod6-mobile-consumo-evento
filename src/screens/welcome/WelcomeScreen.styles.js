@@ -55,11 +55,4 @@ export const styles = StyleSheet.create({
     height: '70%',
     marginHorizontal: -80
   }
-  // title: {
-  //   fontSize: FONT_SIZE.xxxl,
-  //   fontWeight: 'bold',
-  //   color: COLORS.white,
-  //   width: '75%',
-  //   marginLeft: 25
-  // }
 })

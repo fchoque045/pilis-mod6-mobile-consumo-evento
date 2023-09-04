@@ -11,7 +11,7 @@ export const signIn = async (email, password) => {
     })
     return response.json()
   } catch {
-    throw new Error('could not fetch')
+    throw new Error('could not fetch SignIn')
   }
 }
 export const signUp = async (data) => {
@@ -23,7 +23,7 @@ export const signUp = async (data) => {
     })
     return response.json()
   } catch {
-    throw new Error('could not fetch')
+    throw new Error('could not fetch signUp')
   }
 }
 export const getUser = async (id, token) => {
@@ -33,6 +33,27 @@ export const getUser = async (id, token) => {
     })
     return response.json()
   } catch {
-    throw new Error('could not fetch')
+    throw new Error('could not fetch getUser')
+  }
+}
+export const getWalletUser = async (id, token) => {
+  try {
+    const response = await fetch(`${apiUrl}/wallets/user/${id}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    return response.json()
+  } catch {
+    throw new Error('could not fetch getWalletUser')
+  }
+}
+export const putWalletCode = async (id, token) => {
+  try {
+    const response = await fetch(`${apiUrl}/wallets/code/${id}`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    return response.json()
+  } catch {
+    throw new Error('could not fetch putWalletCode')
   }
 }

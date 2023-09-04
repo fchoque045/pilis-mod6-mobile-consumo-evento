@@ -46,8 +46,9 @@ export const MainStackScreen = () => {
 const styles = StyleSheet.create({
   tabBar: {
     height: SPACING.xxxl,
-    backgroundColor: COLORS.grey,
+    backgroundColor: COLORS.white,
     paddingBottom: SPACING.xs,
-    paddingTop: SPACING.xs
+    paddingTop: SPACING.xs,
+    borderTopColor: COLORS.text
   }
 })

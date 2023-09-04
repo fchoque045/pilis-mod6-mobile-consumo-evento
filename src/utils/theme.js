@@ -5,7 +5,7 @@ export const COLORS = {
   inactivePri: '#D4F194',
   inactiveSec: '#6CCCF2',
   white: '#FFFFFF',
-  grey: '#F1F1F1',
+  grey: '#F5F5F5',
   greenDark: '#52A62D'
 }
 export const SPACING = {
