@@ -100,5 +100,9 @@ export const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold'
+  },
+  scroll: {
+    backgroundColor: 'rgba(255, 0, 0, 0.0)',
+    width: Dimensions.get('screen').width
   }
 })

@@ -1,5 +1,5 @@
 import { React, useContext, useEffect, useState } from 'react'
-import { Text, View, BackHandler, SafeAreaView, Image, TouchableOpacity } from 'react-native'
+import { Text, View, BackHandler, SafeAreaView, Image, TouchableOpacity, ScrollView, RefreshControl } from 'react-native'
 import { styles } from '../home/HomeScreen.styles'
 import { UserContext } from '../../contexts/UserContext'
 import { useNavigation } from '@react-navigation/native'
@@ -13,17 +13,10 @@ export const HomeScreen = () => {
   const [wallet, setWallet] = useState({ balance: 0, code: 0 })
   const [minutes, setMinutes] = useState(0)
   const [seconds, setSeconds] = useState(0)
+  const [refreshing, setRefreshing] = useState(false)
   const navigation = useNavigation()
   useEffect(() => {
-    getWalletUser(currentUser.user.id, currentUser.token).then(data => {
-      if (data.message) {
-        return showToastError('Algo Salió Mal', data.message)
-      }
-      setWallet(data)
-    }).catch(err => {
-      showToastError('Fallo en la Conexion', 'Su Saldo no pudo ser Actualizada')
-      console.warn(err)
-    })
+    fetchWallet()
     const backAction = () => {
       if (navigation.isFocused()) {
         BackHandler.exitApp()
@@ -34,6 +27,24 @@ export const HomeScreen = () => {
     const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction)
     return () => backHandler.remove()
   }, [])
+  const fetchWallet = () => {
+    setRefreshing(true)
+    getWalletUser(currentUser.user.id, currentUser.token).then(data => {
+      if (data.message) {
+        return showToastError('Algo Salió Mal', data.message)
+      }
+      setWallet(data)
+      setRefreshing(false)
+    }).catch(err => {
+      showToastError('Fallo en la Conexion', 'Su Saldo no pudo ser Actualizada')
+      setRefreshing(false)
+      console.warn(err)
+    })
+  }
+  const onRefresh = () => {
+    setRefreshing(true)
+    fetchWallet()
+  }
   const handleNuevoCode = () => {
     putWalletCode(wallet.id, currentUser.token).then(data => {
       if (data.message) {
@@ -70,33 +81,40 @@ export const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.cardView}>
-        <View style={styles.containerProfile}>
-          <Image source={require('../../../assets/user_log.png')} style={styles.profileImage} />
-          <View>
-            <Text style={styles.title}>Welcome!</Text>
-            <Text style={styles.subTitle}>{currentUser.user.fullname}</Text>
+      <ScrollView
+        style={styles.scroll}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+      >
+        <View style={styles.cardView}>
+          <View style={styles.containerProfile}>
+            <Image source={require('../../../assets/user_log.png')} style={styles.profileImage} />
+            <View>
+              <Text style={styles.title}>Welcome!</Text>
+              <Text style={styles.subTitle}>{currentUser.user.fullname}</Text>
+            </View>
           </View>
         </View>
-      </View>
-      <View style={[styles.cardView, styles.containerWallet]}>
-        <View style={styles.walletSaldo}>
-          <Text style={styles.titleSaldo}>Saldo</Text>
-          <Text style={styles.subTitleSaldo}>${wallet.balance}</Text>
+        <View style={[styles.cardView, styles.containerWallet]}>
+          <View style={styles.walletSaldo}>
+            <Text style={styles.titleSaldo}>Saldo</Text>
+            <Text style={styles.subTitleSaldo}>${wallet.balance}</Text>
+          </View>
+          <View style={styles.walletCode}>
+            <Text style={styles.titleCode}>{wallet.code}</Text>
+            <Text style={styles.subTitleCode}>
+              {minutes === 0 && seconds === 0
+                ? <Text style={[styles.subTitleCode, styles.subRedTitleCode]}>Codigo expirado: </Text>
+                : 'Tu codigo expira en: '}
+              <Text style={styles.minuteCode}>{`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}</Text>
+            </Text>
+            <TouchableOpacity style={styles.button} onPress={handleNuevoCode}>
+              <Text style={styles.buttonText}>Nuevo codigo</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={styles.walletCode}>
-          <Text style={styles.titleCode}>{wallet.code}</Text>
-          <Text style={styles.subTitleCode}>
-            {minutes === 0 && seconds === 0
-              ? <Text style={[styles.subTitleCode, styles.subRedTitleCode]}>Codigo expirado: </Text>
-              : 'Tu codigo expira en: '}
-            <Text style={styles.minuteCode}>{`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}</Text>
-          </Text>
-          <TouchableOpacity style={styles.button} onPress={handleNuevoCode}>
-            <Text style={styles.buttonText}>Nuevo codigo</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      </ScrollView>
       <Toast />
     </SafeAreaView>
   )
