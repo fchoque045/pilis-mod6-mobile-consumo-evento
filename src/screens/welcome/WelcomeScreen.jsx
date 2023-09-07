@@ -4,15 +4,18 @@ import { styles } from './WelcomeScreen.styles'
 import { useNavigation } from '@react-navigation/native'
 import { getData } from '../../api/storage'
 import { UserContext } from '../../contexts/UserContext'
+import jwtDecode from 'jwt-decode'
 
 export const WelcomeScreen = () => {
   const navigation = useNavigation()
   const { setCurrentUser } = useContext(UserContext)
   useEffect(() => {
     getData().then(data => {
-      if (data) {
+      if (data && checkDataToken(data)) {
         setCurrentUser(data)
         navigation.navigate('Main')
+      } else {
+        navigation.navigate('Welcome')
       }
     }).catch(err => console.warn(err))
   }, [])
@@ -21,6 +24,16 @@ export const WelcomeScreen = () => {
   }
   const handleSignUp = () => {
     navigation.navigate('SignUp')
+  }
+  const checkDataToken = (data) => {
+    const fechaActual = new Date()
+    const timestampActual = Math.floor(fechaActual.getTime() / 1000)
+    const decodedToken = jwtDecode(data.token)
+    if (timestampActual < decodedToken.exp) {
+      return true
+    } else {
+      return false
+    }
   }
   return (
     <SafeAreaView style={styles.container}>
