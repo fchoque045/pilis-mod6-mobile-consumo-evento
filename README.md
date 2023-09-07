@@ -6,6 +6,8 @@ Grupo 4: Choque, Cruz, Torrejon, Corimayo, Martinez
 
 ## Ejecutar el proyecto 📋
 
+*Setear las variables de entorno en app.json -> "extra"
+
 Instalar dependecias
 
 ```
@@ -33,3 +35,5 @@ npx expo start
 ## Versionado 📌
 
 1.0.1 - Funsionalidad para navegar a distintas pantallas 
+
+1.0.2 - Funsionalidad de SignIn y SignUp
