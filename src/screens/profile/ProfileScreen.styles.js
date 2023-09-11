@@ -1,4 +1,4 @@
-import { StyleSheet, StatusBar } from 'react-native'
+import { StyleSheet, StatusBar, Dimensions } from 'react-native'
 import { COLORS, FONT_SIZE } from '../../utils/theme'
 
 export const styles = StyleSheet.create({
@@ -7,28 +7,7 @@ export const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
     marginTop: StatusBar.currentHeight
   },
-  title: {
-    fontSize: FONT_SIZE.lg,
-    fontWeight: 'bold',
-    color: COLORS.text,
-    width: '100%',
-    marginLeft: 25
-  },
-  button: {
-    backgroundColor: COLORS.secondaty,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 20,
-    marginTop: 200,
-    marginHorizontal: 50,
-    alignItems: 'center'
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold'
-  },
-  centeredView: {
+  modalContainerView: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -52,15 +31,15 @@ export const styles = StyleSheet.create({
   modalButtons: {
     flexDirection: 'row'
   },
-  buttonYes: {
+  modalButtonYes: {
     borderRadius: 20,
     padding: 10,
     paddingHorizontal: 20,
     elevation: 2,
-    backgroundColor: 'red',
+    backgroundColor: '#f32121',
     marginHorizontal: 10
   },
-  buttonNo: {
+  modalButtonNo: {
     borderRadius: 20,
     padding: 10,
     paddingHorizontal: 20,
@@ -76,5 +55,49 @@ export const styles = StyleSheet.create({
     color: COLORS.white,
     marginBottom: 2,
     textAlign: 'center'
+  },
+  scroll: {
+    backgroundColor: 'rgba(255, 0, 0, 0.0)',
+    width: Dimensions.get('screen').width
+  },
+  cardView: {
+    margin: 10,
+    backgroundColor: COLORS.white,
+    borderRadius: 10,
+    padding: 20,
+    alignItems: 'flex-start',
+    height: Dimensions.get('screen').height - 120
+  },
+  profileImage: {
+    width: 180,
+    height: 180,
+    borderRadius: 100
+  },
+  subTitle: {
+    fontSize: FONT_SIZE.md,
+    fontWeight: 'normal',
+    color: COLORS.greenDark,
+    marginTop: 15
+  },
+  imgContainer: {
+    width: '100%',
+    alignItems: 'center'
+  },
+  input: {
+    height: 40
+  },
+  button: {
+    flexDirection: 'row',
+    width: '100%',
+    paddingVertical: 10,
+    alignItems: 'flex-start',
+    paddingHorizontal: 10,
+    marginTop: 15,
+    backgroundColor: COLORS.grey
+  },
+  buttonText: {
+    color: COLORS.text,
+    fontSize: 18,
+    fontWeight: 'bold'
   }
 })
