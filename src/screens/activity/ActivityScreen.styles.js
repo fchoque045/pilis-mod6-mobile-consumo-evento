@@ -1,4 +1,4 @@
-import { StyleSheet, StatusBar } from 'react-native'
+import { StyleSheet, StatusBar, Dimensions } from 'react-native'
 import { COLORS, FONT_SIZE } from '../../utils/theme'
 
 export const styles = StyleSheet.create({
@@ -43,5 +43,13 @@ export const styles = StyleSheet.create({
     fontSize: FONT_SIZE.md,
     color: COLORS.text,
     width: '100%',
+  },
+  buy: {
+    marginTop: 80,
+    position: 'absolute'
+  },
+  scroll: {
+    backgroundColor: 'rgba(255, 0, 0, 0.0)',
+    width: Dimensions.get('screen').width,  
   }
 })
