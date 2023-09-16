@@ -34,8 +34,10 @@ npx expo start
 
 ## Versionado 📌
 
-1.0.1 - Funsionalidad para navegar a distintas pantallas 
+1.0.1 - Funcionalidad para navegar a distintas pantallas 
 
-1.0.2 - Funsionalidad de SignIn y SignUp
+1.0.2 - Funcionalidad de SignIn y SignUp
 
-1.0.3 - Funsionalidad de Generar Codigo en screen Home
+1.0.3 - Funcionalidad de Generar Codigo en screen Home
+
+1.0.4 - Funcionalidad de ver lista de compras 
