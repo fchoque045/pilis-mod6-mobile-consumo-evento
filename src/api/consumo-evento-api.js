@@ -57,3 +57,13 @@ export const putWalletCode = async (id, token) => {
     throw new Error('could not fetch putWalletCode')
   }
 }
+export const getListTransactions = async (id_wallet, token) => {
+  try {
+    const response = await fetch(`${apiUrl}/transactions/wallet/${id_wallet}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    return response.json()
+  } catch {
+    throw new Error('could not fetch SignIn')
+  }
+}

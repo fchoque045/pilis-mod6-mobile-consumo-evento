@@ -4,7 +4,7 @@ import { styles } from '../sign-in/SignInScreen.styles'
 import { useNavigation } from '@react-navigation/native'
 import { Ionicons } from '@expo/vector-icons'
 import { COLORS } from '../../utils/theme'
-import { signIn, getUser } from '../../api/consumo-evento-api'
+import { signIn, getUser, getWalletUser } from '../../api/consumo-evento-api'
 import Toast from 'react-native-toast-message'
 import { showToastError } from '../../utils/toast'
 import { UserContext } from '../../contexts/UserContext'
@@ -31,10 +31,13 @@ export const SignInScreen = () => {
         const decodedToken = jwtDecode(token)
         getUser(decodedToken.id, token).then(data => {
           if (data.role === 'client') {
-            setCurrentUser({ user: data, token })
-            storeData({ user: data, token })
-            navigation.navigate('Main')
-            reset()
+            const save_data = {user: data, token }
+            getWalletUser(data.id, token).then(data => {
+              setCurrentUser({ ...save_data, wallet: data.id})
+              storeData({ ...save_data, wallet: data.id})
+              navigation.navigate('Main')
+              reset()
+            }).catch(err => console.warn(err))
           } else {
             return showToastError('Algo Salio Mal', 'Usuario sin acceso')
           }
