@@ -44,10 +44,6 @@ export const styles = StyleSheet.create({
     color: COLORS.text,
     width: '100%',
   },
-  buy: {
-    marginTop: 80,
-    position: 'absolute'
-  },
   scroll: {
     backgroundColor: 'rgba(255, 0, 0, 0.0)',
     width: Dimensions.get('screen').width,  

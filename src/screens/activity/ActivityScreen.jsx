@@ -40,9 +40,8 @@ export const ActivityScreen = () => {
   }
 
   const dateFormated = (date_string) => {
-    const date = moment(date_string);
-    const dateFormated = date.format('DD/MM HH:mm');
-
+    const date_moment = moment.utc(date_string);
+    const dateFormated = date_moment.format('DD/MM HH:mm');
     return dateFormated
   }
 
@@ -63,21 +62,17 @@ export const ActivityScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-        <ScrollView
-            style={styles.scroll}
-            refreshControl={
-              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        <Text style={styles.title}>Compras</Text>
+        <FlatList
+          data={transactions}
+          renderItem={location}
+          keyExtractor={item => item.id}
+          style={styles.itemList}
+          showsVerticalScrollIndicator={true}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }
-        ></ScrollView>
-        <View style={styles.buy}>
-          <Text style={styles.title}>Compras</Text>
-          <FlatList
-            data={transactions}
-            renderItem={location}
-            keyExtractor={item => item.id}
-            style={styles.itemList}
-          />
-        </View>
+        />
          
     </SafeAreaView>
   )
