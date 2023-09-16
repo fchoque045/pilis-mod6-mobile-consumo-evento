@@ -91,7 +91,7 @@ export const HomeScreen = () => {
           <View style={styles.containerProfile}>
             <Image source={require('../../../assets/user_log.png')} style={styles.profileImage} />
             <View>
-              <Text style={styles.title}>Welcome!</Text>
+              <Text style={styles.title}>Bienvenido!</Text>
               <Text style={styles.subTitle}>{currentUser.user.fullname}</Text>
             </View>
           </View>
