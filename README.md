@@ -41,3 +41,5 @@ npx expo start
 1.0.3 - Funcionalidad de Generar Codigo en screen Home
 
 1.0.4 - Funcionalidad de ver lista de compras 
+
+1.0.5 - Actualizacion del screen Profile, ver Datos del Usuario 

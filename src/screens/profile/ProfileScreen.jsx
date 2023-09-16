@@ -1,25 +1,40 @@
 import React, { useContext, useState } from 'react'
-import { Text, View, TouchableOpacity, Modal, Alert } from 'react-native'
+import { Text, View, TouchableOpacity, Modal, Alert, ScrollView, SafeAreaView, Image, TextInput } from 'react-native'
 import { styles } from './ProfileScreen.styles'
 import { useNavigation } from '@react-navigation/native'
 import { removeData } from '../../api/storage'
 import { UserContext } from '../../contexts/UserContext'
+import { Ionicons } from '@expo/vector-icons'
 
 export const ProfileScreen = () => {
   const navigation = useNavigation()
-  const { setCurrentUser } = useContext(UserContext)
+  const { currentUser, setCurrentUser } = useContext(UserContext)
   const [modalVisible, setModalVisible] = useState(false)
+
   const handle = () => {
     setCurrentUser(null)
     removeData()
     navigation.navigate('Welcome')
   }
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Profile Screen</Text>
-      <TouchableOpacity style={styles.button} onPress={() => setModalVisible(true)}>
-        <Text style={styles.buttonText}>salir</Text>
-      </TouchableOpacity>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.scroll}>
+        <View style={styles.cardView}>
+          <View style={styles.imgContainer}>
+            <Image style={styles.profileImage} source={require('../../../assets/user_log.png')} />
+          </View>
+          <Text style={styles.subTitle}>Nombre y Apellido</Text>
+          <TextInput style={styles.input} placeholder='Nombre y Apellido' value={currentUser.user.fullname} editable={false} />
+          <Text style={styles.subTitle}>DNI</Text>
+          <TextInput style={styles.input} placeholder='DNI' value={String(currentUser.user.dni)} editable={false} />
+          <Text style={styles.subTitle}>Correo Electronico</Text>
+          <TextInput style={styles.input} placeholder='Correo Electronico' value={currentUser.user.email} editable={false} />
+          <TouchableOpacity style={styles.button} onPress={() => setModalVisible(true)} activeOpacity={0.7}>
+            <Ionicons name='log-out-outline' size={24} color='gray' />
+            <Text style={styles.buttonText}> Cerrar Sesión</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
       <Modal
         animationType='slide'
         transparent
@@ -29,18 +44,18 @@ export const ProfileScreen = () => {
           setModalVisible(!modalVisible)
         }}
       >
-        <View style={styles.centeredView}>
+        <View style={styles.modalContainerView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>¿Desea cerrar sesión?</Text>
             <View style={styles.modalButtons}>
               <TouchableOpacity
-                style={styles.buttonYes}
+                style={styles.modalButtonYes}
                 onPress={handle}
               >
                 <Text style={styles.modalTextButton}>Si</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={styles.buttonNo}
+                style={styles.modalButtonNo}
                 onPress={() => setModalVisible(!modalVisible)}
               >
                 <Text style={styles.modalTextButton}>No</Text>
@@ -49,6 +64,6 @@ export const ProfileScreen = () => {
           </View>
         </View>
       </Modal>
-    </View>
+    </SafeAreaView>
   )
 }
