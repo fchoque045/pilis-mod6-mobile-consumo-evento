@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Text, View, SafeAreaView, ScrollView, RefreshControl, FlatList } from 'react-native'
+import { Text, View, SafeAreaView, RefreshControl, FlatList, Pressable } from 'react-native'
 import { styles } from './ActivityScreen.styles'
 import { getListTransactions } from '../../api/consumo-evento-api'
 import { UserContext } from '../../contexts/UserContext'
 import { showToastError } from '../../utils/toast'
 import moment from 'moment'
 
-export const ActivityScreen = () => {
-
-  const {currentUser} = useContext(UserContext)
+export const ActivityScreen = ({ navigation }) => {
+  const { currentUser } = useContext(UserContext)
   const [transactions, setTransactions] = useState([])
   const [refreshing, setRefreshing] = useState(false)
 
@@ -23,9 +22,6 @@ export const ActivityScreen = () => {
       if (data.message) {
         return showToastError('Algo Salió Mal', data.message)
       }
-      data.map((t) => {
-        t.date = dateFormated(t.date)
-      })
       setTransactions(data)
       setRefreshing(false)
     }).catch(err => {
@@ -39,14 +35,9 @@ export const ActivityScreen = () => {
     refreshTransactions()
   }
 
-  const dateFormated = (date_string) => {
-    const date_moment = moment.utc(date_string);
-    const dateFormated = date_moment.format('DD/MM HH:mm');
-    return dateFormated
-  }
-
   const location = ({ item }) => (
-    <View style={styles.cardView}>
+    <Pressable onPress={() => navigation.navigate('ActivityDetail', { item })}>
+      <View style={styles.cardView}>
         <View style={styles.containerTransaction}>
           <View>
             <Text style={styles.titleBusiness}>{item.business.name}</Text>
@@ -54,26 +45,25 @@ export const ActivityScreen = () => {
           </View>
           <View>
             <Text style={styles.titleBusiness}>${item.amount}</Text>
-            <Text style={styles.titleLocation}>{item.date}hs</Text>
+            <Text style={styles.titleLocation}>{moment.utc(item.date).format('DD/MM HH:mm')}hs</Text>
           </View>
         </View>
-    </View>
+      </View>
+    </Pressable>
   )
 
   return (
     <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Compras</Text>
-        <FlatList
-          data={transactions}
-          renderItem={location}
-          keyExtractor={item => item.id}
-          style={styles.itemList}
-          showsVerticalScrollIndicator={true}
-          refreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-          }
-        />
-         
+      <Text style={styles.title}>Compras</Text>
+      <FlatList
+        data={transactions}
+        renderItem={location}
+        keyExtractor={item => item.id}
+        showsVerticalScrollIndicator
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      />
     </SafeAreaView>
   )
 }

@@ -40,10 +40,10 @@ export const WelcomeScreen = () => {
       <View style={styles.roundedContainer}>
         <ImageBackground style={styles.bgImage} source={require('../../../assets/bg.png')}>
           <Text style={styles.title}>
-            Consumo
+            ¡Te damos la bienvenida a
           </Text>
           <Text style={styles.subTitle}>
-            en Evento
+            GoEvent!
           </Text>
         </ImageBackground>
       </View>

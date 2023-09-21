@@ -41,15 +41,15 @@ export const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   containerWallet: {
-    height: Dimensions.get('screen').height - 240
+    height: Dimensions.get('screen').height - 335
   },
   walletSaldo: {
     backgroundColor: '#EBF3CE',
     padding: 10,
     borderRadius: 10,
-    width: '100%',
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    paddingVertical: 25
   },
   titleSaldo: {
     fontSize: FONT_SIZE.lg,
@@ -59,7 +59,7 @@ export const styles = StyleSheet.create({
   },
   subTitleSaldo: {
     fontSize: FONT_SIZE.lg,
-    fontWeight: 'normal',
+    fontWeight: '400',
     color: COLORS.text,
     marginRight: 20
   },

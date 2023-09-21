@@ -23,16 +23,18 @@ export const ProfileScreen = () => {
           <View style={styles.imgContainer}>
             <Image style={styles.profileImage} source={require('../../../assets/user_log.png')} />
           </View>
-          <Text style={styles.subTitle}>Nombre y Apellido</Text>
+          <Text style={[styles.subTitle, styles.border]}>Nombre y Apellido</Text>
           <TextInput style={styles.input} placeholder='Nombre y Apellido' value={currentUser.user.fullname} editable={false} />
-          <Text style={styles.subTitle}>DNI</Text>
+          <Text style={[styles.subTitle, styles.border]}>DNI</Text>
           <TextInput style={styles.input} placeholder='DNI' value={String(currentUser.user.dni)} editable={false} />
-          <Text style={styles.subTitle}>Correo Electronico</Text>
+          <Text style={[styles.subTitle, styles.border]}>Correo Electronico</Text>
           <TextInput style={styles.input} placeholder='Correo Electronico' value={currentUser.user.email} editable={false} />
-          <TouchableOpacity style={styles.button} onPress={() => setModalVisible(true)} activeOpacity={0.7}>
-            <Ionicons name='log-out-outline' size={24} color='gray' />
-            <Text style={styles.buttonText}> Cerrar Sesión</Text>
-          </TouchableOpacity>
+          <View style={[styles.containButton, styles.border]}>
+            <TouchableOpacity style={[styles.button]} onPress={() => setModalVisible(true)} activeOpacity={0.7}>
+              <Ionicons name='log-out-outline' size={24} color='gray' />
+              <Text style={styles.buttonText}> Cerrar Sesión</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
       <Modal

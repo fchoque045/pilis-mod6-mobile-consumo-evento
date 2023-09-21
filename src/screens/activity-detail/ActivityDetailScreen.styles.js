@@ -4,8 +4,12 @@ import { COLORS, FONT_SIZE } from '../../utils/theme'
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.grey,
+    backgroundColor: COLORS.white,
     marginTop: StatusBar.currentHeight
+  },
+  textContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   title: {
     fontSize: FONT_SIZE.lg,
@@ -29,24 +33,30 @@ export const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5
   },
-  containerTransaction: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-  titleBusiness: {
+  subTitle1: {
+    paddingTop: 30,
     fontSize: FONT_SIZE.md,
-    fontWeight: 'bold',
+    fontWeight: '300',
     color: COLORS.text,
     width: '100%',
+    textAlign: 'center',
   },
-  titleLocation: {
+  subTitle2: {
     fontSize: FONT_SIZE.md,
-    color: COLORS.text,
+    fontWeight: '300',
+    color: COLORS.greenDark,
     width: '100%',
+    textAlign: 'center',
   },
-  scroll: {
-    backgroundColor: 'rgba(255, 0, 0, 0.0)',
-    width: Dimensions.get('screen').width,  
+  text1: {
+    fontSize: FONT_SIZE.md,
+    fontWeight: '300',
+    color: 'black'
+  },
+  text2: {
+    fontSize: FONT_SIZE.md,
+    fontWeight: '300',
+    color: COLORS.text,
+    textAlign: 'right'
   }
 })

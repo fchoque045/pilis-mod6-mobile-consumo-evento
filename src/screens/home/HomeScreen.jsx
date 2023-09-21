@@ -7,6 +7,8 @@ import { getWalletUser, putWalletCode } from '../../api/consumo-evento-api'
 import Toast from 'react-native-toast-message'
 import { showToastError } from '../../utils/toast'
 import moment from 'moment'
+import { LinearGradient } from 'expo-linear-gradient';
+import { COLORS } from '../../utils/theme'
 
 export const HomeScreen = () => {
   const { currentUser } = useContext(UserContext)
@@ -14,6 +16,7 @@ export const HomeScreen = () => {
   const [minutes, setMinutes] = useState(0)
   const [seconds, setSeconds] = useState(0)
   const [refreshing, setRefreshing] = useState(false)
+  const [showBalance, setShowBalance] = useState(true)
   const navigation = useNavigation()
   useEffect(() => {
     fetchWallet()
@@ -50,6 +53,8 @@ export const HomeScreen = () => {
       if (data.message) {
         return showToastError('Algo Salió Mal', data.message)
       }
+      setMinutes(0)
+      setSeconds(0)
       setWallet((prev) => ({
         ...prev,
         code: data.code,
@@ -96,11 +101,20 @@ export const HomeScreen = () => {
             </View>
           </View>
         </View>
+        <LinearGradient
+          start={{x: 0, y: 0}} end={{x: 0.5, y: 1}} 
+          locations={[0.8,1]}
+          colors={[COLORS.inactivePri, '#EBF3CE']}
+          style={[styles.cardView, styles.walletSaldo]}
+        >
+          <Text style={styles.titleSaldo}>Saldo</Text>
+          <TouchableOpacity onPress={() => setShowBalance(!showBalance)}>
+            {showBalance
+              ? <Text style={styles.subTitleSaldo}>${wallet.balance}</Text>
+              : <Text style={styles.subTitleSaldo}>$******</Text>}
+          </TouchableOpacity>
+        </LinearGradient>
         <View style={[styles.cardView, styles.containerWallet]}>
-          <View style={styles.walletSaldo}>
-            <Text style={styles.titleSaldo}>Saldo</Text>
-            <Text style={styles.subTitleSaldo}>${wallet.balance}</Text>
-          </View>
           <View style={styles.walletCode}>
             <Text style={styles.titleCode}>{wallet.code}</Text>
             <Text style={styles.subTitleCode}>

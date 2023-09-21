@@ -8,14 +8,14 @@ export const styles = StyleSheet.create({
     backgroundColor: COLORS.white
   },
   title: {
-    fontSize: FONT_SIZE.xxl,
-    fontWeight: 'bold',
-    color: COLORS.secondaty
+    fontSize: FONT_SIZE.lg,
+    fontWeight: '400',
+    color: COLORS.white
   },
   subTitle: {
-    fontSize: FONT_SIZE.xl,
-    fontWeight: 'bold',
-    color: COLORS.primary,
+    fontSize: FONT_SIZE.lg,
+    fontWeight: '400',
+    color: COLORS.white,
     paddingBottom: 50
   },
   buttonIn: {
