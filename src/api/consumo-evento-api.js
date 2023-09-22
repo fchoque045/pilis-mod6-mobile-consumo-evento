@@ -64,6 +64,6 @@ export const getListTransactions = async (id_wallet, token) => {
     })
     return response.json()
   } catch {
-    throw new Error('could not fetch SignIn')
+    throw new Error('could not fetch getListTransactions')
   }
 }

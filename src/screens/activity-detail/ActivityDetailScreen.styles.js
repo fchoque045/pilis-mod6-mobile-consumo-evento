@@ -1,4 +1,4 @@
-import { StyleSheet, StatusBar, Dimensions } from 'react-native'
+import { StyleSheet, StatusBar } from 'react-native'
 import { COLORS, FONT_SIZE } from '../../utils/theme'
 
 export const styles = StyleSheet.create({
@@ -6,6 +6,10 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.grey,
     marginTop: StatusBar.currentHeight
+  },
+  textContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   title: {
     fontSize: FONT_SIZE.lg,
@@ -29,24 +33,41 @@ export const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5
   },
-  containerTransaction: {
+  subTitle1: {
+    paddingTop: 30,
+    fontSize: FONT_SIZE.md,
+    fontWeight: '300',
+    color: COLORS.text,
     width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between'
+    textAlign: 'center'
   },
-  titleBusiness: {
+  subTitle2: {
     fontSize: FONT_SIZE.md,
-    fontWeight: 'bold',
-    color: COLORS.text,
-    width: '100%'
+    fontWeight: '300',
+    color: COLORS.greenDark,
+    width: '100%',
+    textAlign: 'center'
   },
-  titleLocation: {
+  text1: {
     fontSize: FONT_SIZE.md,
-    color: COLORS.text,
-    width: '100%'
+    fontWeight: '300',
+    color: 'black',
+    marginVertical: 5
   },
-  scroll: {
-    backgroundColor: 'rgba(255, 0, 0, 0.0)',
-    width: Dimensions.get('screen').width
+  text2: {
+    fontSize: FONT_SIZE.md,
+    fontWeight: '300',
+    color: COLORS.text,
+    textAlign: 'right',
+    marginVertical: 5
+  },
+  border: {
+    borderColor: COLORS.inactivePri,
+    borderTopWidth: 1,
+    paddingTop: 10,
+    marginTop: 10
+  },
+  contain: {
+    width: '50%'
   }
 })

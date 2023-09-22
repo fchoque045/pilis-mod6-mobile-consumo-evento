@@ -77,7 +77,8 @@ export const styles = StyleSheet.create({
     fontSize: FONT_SIZE.md,
     fontWeight: 'normal',
     color: COLORS.greenDark,
-    marginTop: 15
+    marginTop: 15,
+    width: '100%'
   },
   imgContainer: {
     width: '100%',
@@ -92,12 +93,21 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     alignItems: 'flex-start',
     paddingHorizontal: 10,
-    marginTop: 15,
+    marginTop: 5,
     backgroundColor: COLORS.grey
   },
   buttonText: {
     color: COLORS.text,
     fontSize: 18,
     fontWeight: 'bold'
+  },
+  border: {
+    borderColor: COLORS.inactivePri,
+    borderTopWidth: 1,
+    paddingTop: 5
+  },
+  containButton: {
+    width: '100%',
+    marginTop: 15
   }
 })
