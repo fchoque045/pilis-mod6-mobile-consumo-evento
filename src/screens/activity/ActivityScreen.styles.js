@@ -38,15 +38,15 @@ export const styles = StyleSheet.create({
     fontSize: FONT_SIZE.md,
     fontWeight: 'bold',
     color: COLORS.text,
-    width: '100%',
+    width: '100%'
   },
   titleLocation: {
     fontSize: FONT_SIZE.md,
     color: COLORS.text,
-    width: '100%',
+    width: '100%'
   },
   scroll: {
     backgroundColor: 'rgba(255, 0, 0, 0.0)',
-    width: Dimensions.get('screen').width,  
+    width: Dimensions.get('screen').width
   }
 })

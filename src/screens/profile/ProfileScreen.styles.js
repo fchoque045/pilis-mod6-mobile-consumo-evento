@@ -108,6 +108,6 @@ export const styles = StyleSheet.create({
   },
   containButton: {
     width: '100%',
-    marginTop: 15,
+    marginTop: 15
   }
 })

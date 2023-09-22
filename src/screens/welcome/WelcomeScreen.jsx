@@ -38,14 +38,7 @@ export const WelcomeScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.roundedContainer}>
-        <ImageBackground style={styles.bgImage} source={require('../../../assets/bg.png')}>
-          <Text style={styles.title}>
-            ¡Te damos la bienvenida a
-          </Text>
-          <Text style={styles.subTitle}>
-            GoEvent!
-          </Text>
-        </ImageBackground>
+        <ImageBackground style={styles.bgImage} source={require('../../../assets/bg_log.jpeg')} />
       </View>
       <TouchableOpacity style={styles.buttonIn} onPress={handleSignIn}>
         <Text style={styles.buttonText}>Iniciar Sesión</Text>

@@ -1,10 +1,10 @@
-import { StyleSheet, StatusBar, Dimensions } from 'react-native'
+import { StyleSheet, StatusBar } from 'react-native'
 import { COLORS, FONT_SIZE } from '../../utils/theme'
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.grey,
     marginTop: StatusBar.currentHeight
   },
   textContainer: {
@@ -39,24 +39,35 @@ export const styles = StyleSheet.create({
     fontWeight: '300',
     color: COLORS.text,
     width: '100%',
-    textAlign: 'center',
+    textAlign: 'center'
   },
   subTitle2: {
     fontSize: FONT_SIZE.md,
     fontWeight: '300',
     color: COLORS.greenDark,
     width: '100%',
-    textAlign: 'center',
+    textAlign: 'center'
   },
   text1: {
     fontSize: FONT_SIZE.md,
     fontWeight: '300',
-    color: 'black'
+    color: 'black',
+    marginVertical: 5
   },
   text2: {
     fontSize: FONT_SIZE.md,
     fontWeight: '300',
     color: COLORS.text,
-    textAlign: 'right'
+    textAlign: 'right',
+    marginVertical: 5
+  },
+  border: {
+    borderColor: COLORS.inactivePri,
+    borderTopWidth: 1,
+    paddingTop: 10,
+    marginTop: 10
+  },
+  contain: {
+    width: '50%'
   }
 })

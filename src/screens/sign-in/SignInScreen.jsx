@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useContext, useState } from 'react'
 import { Text, View, TouchableOpacity, SafeAreaView, ImageBackground, TextInput, ScrollView } from 'react-native'
 import { styles } from '../sign-in/SignInScreen.styles'
@@ -31,10 +32,10 @@ export const SignInScreen = () => {
         const decodedToken = jwtDecode(token)
         getUser(decodedToken.id, token).then(data => {
           if (data.role === 'client') {
-            const save_data = {user: data, token }
+            const save_data = { user: data, token }
             getWalletUser(data.id, token).then(data => {
-              setCurrentUser({ ...save_data, wallet: data.id})
-              storeData({ ...save_data, wallet: data.id})
+              setCurrentUser({ ...save_data, wallet: data.id })
+              storeData({ ...save_data, wallet: data.id })
               navigation.navigate('Main')
               reset()
             }).catch(err => console.warn(err))

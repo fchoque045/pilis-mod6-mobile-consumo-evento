@@ -7,7 +7,7 @@ import { getWalletUser, putWalletCode } from '../../api/consumo-evento-api'
 import Toast from 'react-native-toast-message'
 import { showToastError } from '../../utils/toast'
 import moment from 'moment'
-import { LinearGradient } from 'expo-linear-gradient';
+import { LinearGradient } from 'expo-linear-gradient'
 import { COLORS } from '../../utils/theme'
 
 export const HomeScreen = () => {
@@ -102,9 +102,9 @@ export const HomeScreen = () => {
           </View>
         </View>
         <LinearGradient
-          start={{x: 0, y: 0}} end={{x: 0.5, y: 1}} 
-          locations={[0.8,1]}
-          colors={[COLORS.inactivePri, '#EBF3CE']}
+          start={{ x: 0, y: 0 }} end={{ x: 0.5, y: 1 }}
+          locations={[0.8, 1]}
+          colors={['#EBF3CE', COLORS.inactivePri]}
           style={[styles.cardView, styles.walletSaldo]}
         >
           <Text style={styles.titleSaldo}>Saldo</Text>

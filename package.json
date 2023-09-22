@@ -33,9 +33,6 @@
   },
   "private": true,
   "eslintConfig": {
-    "extends": "./node_modules/standard/eslintrc.json",
-    "rules": {
-      "eslint-disable camelcase": false
-    }
+    "extends": "./node_modules/standard/eslintrc.json"
   }
 }
