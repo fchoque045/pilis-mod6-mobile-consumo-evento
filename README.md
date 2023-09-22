@@ -43,3 +43,5 @@ npx expo start
 1.0.4 - Funcionalidad de ver lista de compras 
 
 1.0.5 - Actualizacion del screen Profile, ver Datos del Usuario 
+
+1.0.6 - Funcionalidad ver detalle de compra 
