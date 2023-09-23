@@ -6,6 +6,8 @@ Grupo 4: Choque, Cruz, Torrejon, Corimayo, Martinez
 
 ## Ejecutar el proyecto 📋
 
+*Setear las variables de entorno en app.json -> "extra"
+
 Instalar dependecias
 
 ```
@@ -29,3 +31,17 @@ Correr la app
 ```
 npx expo start
 ```
+
+## Versionado 📌
+
+1.0.1 - Funcionalidad para navegar a distintas pantallas 
+
+1.0.2 - Funcionalidad de SignIn y SignUp
+
+1.0.3 - Funcionalidad de Generar Codigo en screen Home
+
+1.0.4 - Funcionalidad de ver lista de compras 
+
+1.0.5 - Actualizacion del screen Profile, ver Datos del Usuario 
+
+1.0.6 - Funcionalidad ver detalle de compra 
